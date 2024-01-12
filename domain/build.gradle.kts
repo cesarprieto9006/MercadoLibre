@@ -37,9 +37,9 @@ android {
 dependencies {
     implementation(project(":data"))
 
-    implementation(Libs.Arrow.core)
-    implementation(Libs.Arrow.coroutines)
-    implementation(Libs.Arrow.retrofit)
-    implementation(Libs.JavaX.inject)
-    implementation(Libs.AndroidX.Test.Ext.junit)
+    implementation(Libs.core)
+    implementation(Libs.coroutines)
+    implementation(Libs.retrofit)
+    implementation(Libs.inject)
+    implementation(Libs.junit)
 }
