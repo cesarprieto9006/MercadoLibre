@@ -17,4 +17,3 @@ rootProject.name = "MercadoLibre"
 include ':app'
 include ':data'
 include ':domain'
-include ':usecase'
