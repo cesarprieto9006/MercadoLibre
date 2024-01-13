@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_images"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_300dp"
+        android:layout_height="@dimen/margin_350dp"
         app:cardCornerRadius="@dimen/margin_10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/iv_images"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_300dp"
+            android:layout_height="@dimen/margin_350dp"
             android:scaleType="fitXY"
             tools:ignore="ContentDescription" />
     </androidx.cardview.widget.CardView>
