@@ -2,11 +2,13 @@ package com.example.mercadolibre.ui.product
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.mercadolibre.R
 import com.example.mercadolibre.databinding.ActivityMainBinding
+import com.example.mercadolibre.ui.product.fragment.detail.DetailProductFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         configureBundle()
         configureNavigationController()
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     private fun startAnimationSplash() {
@@ -50,4 +53,15 @@ class MainActivity : AppCompatActivity() {
         navHost = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHost.navController
     }
+
+    private val onBackPressedCallback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                when (navHost.childFragmentManager.primaryNavigationFragment) {
+                    is DetailProductFragment -> {
+                        navController.navigateUp()
+                    }
+                }
+            }
+        }
 }

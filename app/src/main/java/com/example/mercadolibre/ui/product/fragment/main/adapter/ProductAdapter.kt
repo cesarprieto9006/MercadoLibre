@@ -1,4 +1,4 @@
-package com.example.mercadolibre.ui.product
+package com.example.mercadolibre.ui.product.fragment.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,44 +9,44 @@ import com.example.data.dto.ProductData
 import com.example.mercadolibre.databinding.ItemProductBinding
 import java.text.DecimalFormat
 
-class MovementsAdapter(
-    private val movements: List<ProductData>,
+class ProductAdapter(
+    private val products: List<ProductData>,
     private val onItemClick: ((data: ProductData) -> Unit)? = null,
-) : RecyclerView.Adapter<MovementsAdapter.MovementViewHolder>() {
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovementViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val item = ItemProductBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return MovementViewHolder(item)
+        return ProductViewHolder(item)
     }
 
-    override fun onBindViewHolder(holder: MovementViewHolder, position: Int) {
-        val movement = movements[position]
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val movement = products[position]
         holder.bind(movement)
     }
 
-    override fun getItemCount() = movements.size
+    override fun getItemCount() = products.size
 
-    inner class MovementViewHolder(private val item: ItemProductBinding) :
+    inner class ProductViewHolder(private val item: ItemProductBinding) :
         RecyclerView.ViewHolder(item.root) {
 
         private val format = DecimalFormat("#,###.00")
-        fun bind(movement: ProductData) {
+        fun bind(product: ProductData) {
 
-            val valueFormat: String = format.format(movement.price)
+            val valueFormat: String = format.format(product.price)
 
             item.lblPriceProduct.text = valueFormat
-            item.lblTitleProduct.text = movement.title
-            item.lblShippingProduct.text = movement.condition
-            item.imgItemProduct.load(movement.pictureUrl) {
+            item.lblTitleProduct.text = product.title
+            item.lblShippingProduct.text = product.condition
+            item.imgItemProduct.load(product.pictureUrl) {
                 crossfade(true)
                 transformations(CircleCropTransformation())
             }
             item.lyItemProduct.setOnClickListener {
-                onItemClick?.invoke(movement)
+                onItemClick?.invoke(product)
             }
         }
     }

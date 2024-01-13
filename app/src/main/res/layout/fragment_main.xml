@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.product.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,11 +9,11 @@
 
         <variable
             name="viewModel"
-            type="com.example.mercadolibre.ui.product.MainViewModel" />
+            type="com.example.mercadolibre.ui.product.fragment.main.MainViewModel" />
 
         <variable
             name="adapter"
-            type="com.example.mercadolibre.ui.product.MovementsAdapter"/>
+            type="com.example.mercadolibre.ui.product.fragment.main.adapter.ProductAdapter"/>
 
     </data>
 

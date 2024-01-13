@@ -64,4 +64,5 @@ dependencies {
     kaptAndroidTest Libs.hiltTesting
     implementation Libs.timber
     implementation Libs.coil
+    implementation Libs.circle
 }

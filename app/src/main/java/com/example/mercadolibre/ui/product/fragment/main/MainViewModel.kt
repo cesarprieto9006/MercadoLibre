@@ -1,4 +1,4 @@
-package com.example.mercadolibre.ui.product
+package com.example.mercadolibre.ui.product.fragment.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.example.data.dto.ProductData
 import com.example.domain.SearchProductUseCase
+import com.example.mercadolibre.ui.product.fragment.TypeImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -16,8 +17,7 @@ import javax.inject.Named
 @HiltViewModel
 class MainViewModel @Inject constructor(
     @Named("IO") private val ioDispatcher: CoroutineDispatcher,
-    private val searchProductUseCase: SearchProductUseCase
-
+    private val searchProductUseCase: SearchProductUseCase,
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData(false)
@@ -48,25 +48,22 @@ class MainViewModel @Inject constructor(
 
                 is Either.Right -> {
                     val product = result.value
-                    if(product.isNotEmpty()) {
-                        _showList.postValue(true)
-                        _product.postValue(result.value)
-                    }
-                    else {
-                        _searchProductVisibility.postValue(true)
-                        _selectImage.postValue(TypeImage.NOT_FOUND)
-                    }
-
+                    validateProduct(product)
                 }
             }
             _isLoading.postValue(false)
         }
     }
 
+    private fun validateProduct(product:List<ProductData>){
+        if (product.isNotEmpty()) {
+            _showList.postValue(true)
+            _product.postValue(product)
+        } else {
+            _searchProductVisibility.postValue(true)
+            _selectImage.postValue(TypeImage.NOT_FOUND)
+        }
+    }
+
 }
 
-enum class TypeImage {
-    SEARCH,               //Types.FOO.ordinal == 0 also position == 0
-    ERROR,               //Types.BAR.ordinal == 1 also position == 1
-    NOT_FOUND            //Types.FOO_BAR.ordinal == 2 also position == 2
-}

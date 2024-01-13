@@ -73,6 +73,8 @@
     <dimen name="margin_165dp">165dp</dimen>
     <dimen name="margin_170dp">170dp</dimen>
     <dimen name="margin_200dp">200dp</dimen>
-
+    <dimen name="margin_300dp">300dp</dimen>
     <dimen name="size_30sp">30sp</dimen>
+    <dimen name="size_20sp">20sp</dimen>
+    <dimen name="size_15sp">15sp</dimen>
 </resources>

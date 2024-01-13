@@ -1,17 +1,21 @@
-package com.example.mercadolibre.ui.product
+package com.example.mercadolibre.ui.product.fragment.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.data.dto.ProductData
 import com.example.mercadolibre.R
 import com.example.mercadolibre.databinding.FragmentMainBinding
+import com.example.mercadolibre.ui.product.fragment.TypeImage
+import com.example.mercadolibre.ui.product.fragment.main.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -19,7 +23,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<MainViewModel>()
-    private lateinit var adapter: MovementsAdapter
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +40,7 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
+
 
     private fun configureBinding() {
         binding.lifecycleOwner = this
@@ -58,14 +63,15 @@ class MainFragment : Fragment() {
     private fun configureListProduct() {
         viewModel.product.observe(viewLifecycleOwner) { movements ->
             if (movements != null) {
-                adapter = MovementsAdapter(movements, ::onItemClickAdd)
+                adapter = ProductAdapter(movements, ::onItemClickAdd)
                 binding.adapter = adapter
             }
         }
     }
 
     private fun onItemClickAdd(movement: ProductData) {
-        Toast.makeText(requireActivity(), movement.id, Toast.LENGTH_SHORT).show()
+        val bundle = bundleOf("productId" to movement.id)
+        view?.findNavController()?.navigate(R.id.action_mainFragment_to_detailProductFragment, bundle)
     }
 
     private fun configureSearch() {
