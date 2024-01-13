@@ -35,5 +35,6 @@ object Libs {
     const val loginInterceptor = "com.squareup.okhttp3:logging-interceptor:$versionInterceptor"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$versionInterceptor"
     const val coil = "io.coil-kt:coil:2.5.0"
+    const val circle = "me.relex:circleindicator:2.1.6"
 
 }
