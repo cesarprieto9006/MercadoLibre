@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MercadoLibre" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.MercadoLibre" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MercadoLibre" parent="Base.Theme.MercadoLibre" />
+    <style name="Theme.app.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/yellow</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground1</item>
+        <item name="postSplashScreenTheme">@style/Theme.MercadoLibre</item>
+    </style>
+
 </resources>

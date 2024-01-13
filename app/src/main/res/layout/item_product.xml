@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/margin_10dp">
+
+        <ImageView
+            android:id="@+id/imgItemProduct"
+            android:layout_width="@dimen/margin_90dp"
+            android:layout_height="@dimen/margin_90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/lblTitleProduct"
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:ellipsize="end"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:maxLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgItemProduct"
+            app:layout_constraintTop_toTopOf="@+id/imgItemProduct"
+            tools:text="Carro"/>
+
+        <TextView
+            android:id="@+id/lblPriceProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/lblShippingProduct"
+            app:layout_constraintStart_toStartOf="@id/lblTitleProduct"
+            app:layout_constraintTop_toBottomOf="@+id/lblTitleProduct"
+            tools:text="$ 0000" />
+
+        <TextView
+            android:id="@+id/lblShippingProduct"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/roboto_italic"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgItemProduct"
+            app:layout_constraintStart_toStartOf="@+id/lblTitleProduct"
+            tools:text="Envío gratis" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_1dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:background="@color/yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgItemProduct" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
